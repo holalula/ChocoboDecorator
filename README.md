@@ -8,11 +8,11 @@ V0.9.0 适配FFXIV国服5.2
 
 请确保以**管理员身份**运行本软件并以**DX11**启动FFXIV
 
-![1](.\img\1.png)
+![1](https://github.com/holalula/ChocoboDecorator/blob/master/img/1.png)
 
 请注意，有时即使勾选了“DirectX 11切换”但是程序仍然会以DX9运行，你可以通过任务管理器中的详细信息来查看FFXIV是否以DX11启动
 
-![2](.\img\2.png)
+![2](https://github.com/holalula/ChocoboDecorator/blob/master/img/2.png)
 
 “ffxiv_dx11.exe”是DX11的进程，而“ffxiv.exe”是DX9的进程。
 
@@ -24,20 +24,20 @@ V0.9.0 适配FFXIV国服5.2
 
    可以解除家具在大部分情况下的放置限制
 
-   ![3](.\img\3.png)
+   ![3](https://github.com/holalula/ChocoboDecorator/blob/master/img/3.png)
 
 2. 修改家具坐标
 
    点选物体获取其坐标，COPY按钮可以将上方的坐标复制到输入栏内，在对应坐标的输入栏中输入新的坐标值并按下回车，再按ESC取消点选状态，物体会放置在新设置的坐标处
 
-   ![41](.\img\41.png)
-   ![42](.\img\42.png)
+   ![41](https://github.com/holalula/ChocoboDecorator/blob/master/img/41.png)
+   ![42](https://github.com/holalula/ChocoboDecorator/blob/master/img/42.png)
 
 3. 导出当前家具信息
 
    点击“记录当前家具信息”后开始5s倒计时，该窗口标题会显示倒计时时间。在倒计时到0s之前，打开布置家具，通过小键盘NUM 1使光标停留在家具列表的第一个家具上。在倒计时结束后，程序会模拟键盘操作，记录下每个家具的位置信息，在此期间请不要触碰鼠标键盘。全部家具读取完毕后，会在该窗口中显示已读取到的家具信息。（模拟键盘的延时保存在“delaytime.json”文件中，e_t2、e_t0、e_tn分别是按下小键盘2、小键盘0和空转的时间，你可以修改这些值来改变按键的延时，单位为ms）
 
-   ![5](.\img\5.png)
+   ![5](https://github.com/holalula/ChocoboDecorator/blob/master/img/5.png)
 
    修改按钮“导出家具列表”前输入框的内容，这是保存你家具信息的文件的名字。然后点击“导出家具列表”，你会在“list”文件夹中得到保存你家具信息的文件。
 
@@ -52,7 +52,7 @@ V0.9.0 适配FFXIV国服5.2
    打开布置家具，把需要摆放的家具放到任意位置。点击“读取当前家具信息”，你会在下面的表格里看到当前摆放出来的家具信息。
 
    输入你要使用的家具列表的名字，点击“验证是否匹配”可以验证放置家具的条件是否符合。这一步的结果会在窗口标题显示出来，0表示不符合，你需要重新检查家具列表和当前摆放出来的家具，如果为1，则检查通过。通过后点击获取坐标，可以得到每一个家具应该摆放的位置坐标。
-![6](.\img\6.png)
+![6](https://github.com/holalula/ChocoboDecorator/blob/master/img/6.png)
    最后和导出时一样，点击“摆放”，在5s内使用小键盘NUM 1使光标停留在家具列表的第一项。倒计时结束后，会逐个家具进行放置（延时数据在和上面相同的文件里）。
 
    任何操作完成后，一定记得要旋转一下各个家具，哪怕退出布置家具后所有家具都在正确的位置。家具自动放置后不旋转可能会使下次进入房间的时候所有家具又恢复之前的位置。
