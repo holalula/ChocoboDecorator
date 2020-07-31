@@ -1,6 +1,6 @@
 # ChocoboDecorator
 
-源码需要整理下，八月初左右上传
+Qqun 596158031
 
 缺失vcruntime140_1.dll请下载VC运行时库
 百度云 ：1RRs96WoYYCAZf7ZKKtfFpA -- 0mg7
