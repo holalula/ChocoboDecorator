@@ -1,6 +1,6 @@
 # ChocoboDecorator
 
-Qqun 596158031
+有问题去issues或者Q群 596158031
 
 缺失vcruntime140_1.dll请下载VC运行时库
 百度云 ：1RRs96WoYYCAZf7ZKKtfFpA -- 0mg7
