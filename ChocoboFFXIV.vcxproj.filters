@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files\qWindow">
+      <UniqueIdentifier>{6528f131-6770-4edd-91d5-b52b31f2908c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\item">
+      <UniqueIdentifier>{5f157c5f-a33e-48b2-87ca-b4c993274f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\qWindow">
+      <UniqueIdentifier>{63b4456a-a230-4686-8ab4-2558e2794201}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\item">
+      <UniqueIdentifier>{91258387-82a1-4eb3-bf9c-c67781119635}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\process">
+      <UniqueIdentifier>{8917c963-8625-4d0a-87e7-8e1a0fcf019d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="ChocoboFFXIV.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <ClCompile Include="ChocoboFFXIV.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <None Include="ChocoboFFXIV.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <ResourceCompile Include="ChocoboFFXIV.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CItemInfo.cpp">
+      <Filter>Source Files\item</Filter>
+    </ClCompile>
+    <ClCompile Include="qWindow\IMPORT.cpp">
+      <Filter>Source Files\qWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="qWindow\EXPORT.cpp">
+      <Filter>Source Files\qWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="qWindow\ITEMINFO.cpp">
+      <Filter>Source Files\item</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="include\ChocoboFFXIV.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="include\qWindow\IMPORT.h">
+      <Filter>Header Files\qWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="include\qWindow\ITEMINFO.h">
+      <Filter>Header Files\qWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="include\qWindow\EXPORT.h">
+      <Filter>Header Files\qWindow</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="ITEMINFO.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="qUI\ChocoboFFXIV.ui">
+      <Filter>Resource Files</Filter>
+    </QtUic>
+    <QtUic Include="qUI\EXPORT.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="qUI\IMPORT.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\rapidjson.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Item\ItemInfo.h">
+      <Filter>Header Files\item</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Item\ItemList.h">
+      <Filter>Header Files\item</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Item\FFJson.h">
+      <Filter>Header Files\item</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Item\CItemInfo.h">
+      <Filter>Header Files\item</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FFProcess\FFProcess.h">
+      <Filter>Header Files\process</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FFProcess\OffsetMgr.h">
+      <Filter>Header Files\process</Filter>
+    </ClInclude>
+    <ClInclude Include="include\framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="chocobohook.lib" />
+  </ItemGroup>
+</Project>
