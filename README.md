@@ -20,7 +20,7 @@ V0.9.0 使用演示视频
 
 **注意：请按照顺序操作，如果你遇到了任何意料之外的情况，直接<u>重启</u>游戏和软件总是能解决大多数问题。**~~（如果你实在不明白怎么操作，请去群里问问熟练工）~~
 
-![v092sj](H:\Git\ChocoboDecorator\img\v092sj.png)
+![v092sj](https://github.com/holalula/ChocoboDecorator/blob/master/img/v092sj.png)
 
 ## 注意事项
 
