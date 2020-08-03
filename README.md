@@ -1,5 +1,7 @@
 # ChocoboDecorator V0.9.2
 
+**Use at your own risk.**
+
 有问题去issues或者Q群 596158031
 
 V0.9.2 适配FFXIV国服5.2，更新更直观的改变坐标方式
