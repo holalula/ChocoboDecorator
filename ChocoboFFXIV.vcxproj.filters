@@ -84,9 +84,6 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="ITEMINFO.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="qUI\ChocoboFFXIV.ui">
       <Filter>Resource Files</Filter>
     </QtUic>
@@ -94,6 +91,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="qUI\IMPORT.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="qUI\ITEMINFO.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

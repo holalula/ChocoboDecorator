@@ -27,7 +27,7 @@ public slots:
 private:
 	Ui::IMPORT ui;
 	void modelclear();
-	vector<vector<float> >f_xyz;
+	vector<vector<float> >f_xyzr;
 	int s_t0;
 	int s_t2;
 	int s_tn;

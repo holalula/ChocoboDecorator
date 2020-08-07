@@ -10,12 +10,13 @@ IMPORT::IMPORT(QWidget *parent)
 	ui.tableView->setMouseTracking(true);
 	model = new QStandardItemModel(this);
 
-	model->setColumnCount(5);
+	model->setColumnCount(6);
 	model->setHeaderData(0, Qt::Horizontal, QStringLiteral("家具"));
 	model->setHeaderData(1, Qt::Horizontal, QStringLiteral("类码"));
 	model->setHeaderData(2, Qt::Horizontal, QStringLiteral("X"));
 	model->setHeaderData(3, Qt::Horizontal, QStringLiteral("Y"));
 	model->setHeaderData(4, Qt::Horizontal, QStringLiteral("Z"));
+	model->setHeaderData(5, Qt::Horizontal, QStringLiteral("R"));
 
 	connect(ui.checkBox, SIGNAL(stateChanged(int)), this, SLOT(cb_checkBox_on_stateChanged(int)));
 	connect(ui.pb_1, SIGNAL(clicked()), this, SLOT(pb_1_on_clicked()));
@@ -38,12 +39,13 @@ IMPORT::IMPORT(QWidget *parent)
 
 void IMPORT::modelclear() {
 	model->clear();
-	model->setColumnCount(5);
+	model->setColumnCount(6);
 	model->setHeaderData(0, Qt::Horizontal, QStringLiteral("家具"));
 	model->setHeaderData(1, Qt::Horizontal, QStringLiteral("类码"));
 	model->setHeaderData(2, Qt::Horizontal, QStringLiteral("X"));
 	model->setHeaderData(3, Qt::Horizontal, QStringLiteral("Y"));
 	model->setHeaderData(4, Qt::Horizontal, QStringLiteral("Z"));
+	model->setHeaderData(5, Qt::Horizontal, QStringLiteral("R"));
 }
 
 void IMPORT::cb_checkBox_on_stateChanged(int a) {
@@ -116,7 +118,7 @@ void IMPORT::pb_2_on_clicked() {
 	ItemList t_itemList;
 	vector<ItemList::CategoryInstance> _itemList = t_itemList.ReadCateListJson(c2);
 	vector<int> il = fp.GetItemList();
-	f_xyz = t_itemList.GetPosOfVectorIntByCategoryList(il, _itemList);
+	f_xyzr = t_itemList.GetPosRotationOfVectorIntByCategoryList(il, _itemList);
 	//
 	modelclear();
 	int crow = 0;
@@ -130,9 +132,10 @@ void IMPORT::pb_2_on_clicked() {
 			temp_list << new QStandardItem(QString::fromLocal8Bit(cstr.c_str()));
 		}
 		temp_list << new QStandardItem(QString::number(il[i]));
-		temp_list << new QStandardItem(QString::number(f_xyz[0][i]));
-		temp_list << new QStandardItem(QString::number(f_xyz[1][i]));
-		temp_list << new QStandardItem(QString::number(f_xyz[2][i]));
+		temp_list << new QStandardItem(QString::number(f_xyzr[0][i]));
+		temp_list << new QStandardItem(QString::number(f_xyzr[1][i]));
+		temp_list << new QStandardItem(QString::number(f_xyzr[2][i]));
+		temp_list << new QStandardItem(QString::number(f_xyzr[3][i]));
 		model->insertRow(crow++, temp_list);
 	}
 
@@ -146,14 +149,15 @@ void IMPORT::pb_3_on_clicked() {
 	vector<vector<float> >temp;
 	vector<int> il = fp.GetItemList();
 	for (int i = 0; i < il.size(); i++) {
-		vector<float> ixyz;
-		ixyz.push_back(f_xyz[0][i]);
-		ixyz.push_back(f_xyz[1][i]);
-		ixyz.push_back(f_xyz[2][i]);
-		temp.push_back(ixyz);
+		vector<float> ixyzr;
+		ixyzr.push_back(f_xyzr[0][i]);
+		ixyzr.push_back(f_xyzr[1][i]);
+		ixyzr.push_back(f_xyzr[2][i]);
+		ixyzr.push_back(f_xyzr[3][i]);
+		temp.push_back(ixyzr);
 	}
 	
-	fp.SetAllItemPos(temp,s_t2,s_t0,s_tn);
-
+	//fp.SetAllItemPos(temp,s_t2,s_t0,s_tn);
+	fp.SetAllItemPosRotation(temp, s_t2, s_t0, s_tn);
 }
 

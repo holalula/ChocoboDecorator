@@ -105,7 +105,7 @@
     <None Include="ChocoboFFXIV.ico" />
     <QtUic Include="qUI\EXPORT.ui" />
     <QtUic Include="qUI\IMPORT.ui" />
-    <QtUic Include="ITEMINFO.ui" />
+    <QtUic Include="qUI\ITEMINFO.ui" />
     <ResourceCompile Include="ChocoboFFXIV.rc" />
   </ItemGroup>
   <ItemGroup>

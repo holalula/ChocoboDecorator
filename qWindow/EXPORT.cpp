@@ -28,13 +28,14 @@ EXPORT::EXPORT(QWidget *parent)
 
 	ui.tableView->setMouseTracking(true);
 	model = new QStandardItemModel(this);
-	model->setColumnCount(6);
+	model->setColumnCount(7);
 	model->setHeaderData(0, Qt::Horizontal, QStringLiteral("家具"));
 	model->setHeaderData(1, Qt::Horizontal, QStringLiteral("类码"));
 	model->setHeaderData(2, Qt::Horizontal, QStringLiteral("序列"));
 	model->setHeaderData(3, Qt::Horizontal, QStringLiteral("X"));
 	model->setHeaderData(4, Qt::Horizontal, QStringLiteral("Y"));
 	model->setHeaderData(5, Qt::Horizontal, QStringLiteral("Z"));
+	model->setHeaderData(6, Qt::Horizontal, QStringLiteral("R"));
 	
 	ui.tableView->setModel(model);
 	citemInfo.update();
@@ -59,7 +60,10 @@ void EXPORT::cb_checkBox_on_stateChanged(int a) {
 		}
 		fp.InjectBlue();
 		vector<int> itemList = fp.GetItemList();
-		vector<vector<float> > pos = fp.GetAllItemPos(1,delay_t2,delay_t0,delay_tn);
+
+		qDebug() << itemList.size() << endl;
+
+		vector<vector<float> > pos = fp.GetAllItemPosRotation(1,delay_t2,delay_t0,delay_tn);
 		int itemCount = itemList.size();
 
 		//Set Table
@@ -80,6 +84,7 @@ void EXPORT::cb_checkBox_on_stateChanged(int a) {
 			temp_list << new QStandardItem(QString::number(pos[0][i]));
 			temp_list << new QStandardItem(QString::number(pos[1][i]));
 			temp_list << new QStandardItem(QString::number(pos[2][i]));
+			temp_list << new QStandardItem(QString::number(pos[3][i]));
 			model->insertRow(crow++, temp_list);
 			samecategoryIndex++;
 			if (itemList[i] != itemList[i + 1]) {
@@ -101,13 +106,14 @@ void EXPORT::SetFp(FFProcess* t) {
 
 void EXPORT::modelclear() {
 	model->clear();
-	model->setColumnCount(6);
+	model->setColumnCount(7);
 	model->setHeaderData(0, Qt::Horizontal, QStringLiteral("家具"));
 	model->setHeaderData(1, Qt::Horizontal, QStringLiteral("类码"));
 	model->setHeaderData(2, Qt::Horizontal, QStringLiteral("序列"));
 	model->setHeaderData(3, Qt::Horizontal, QStringLiteral("X"));
 	model->setHeaderData(4, Qt::Horizontal, QStringLiteral("Y"));
 	model->setHeaderData(5, Qt::Horizontal, QStringLiteral("Z"));
+	model->setHeaderData(6, Qt::Horizontal, QStringLiteral("R"));
 }
 
 //window size event
@@ -121,6 +127,7 @@ void EXPORT::on_tableView_entered(const QModelIndex& index)
 	ui.tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
 }
 
+//c1
 int EXPORT::loadItemListJson(const char* FilePath) {
 	//read .json
 	Document jitemlist;
@@ -151,6 +158,7 @@ int EXPORT::loadItemListJson(const char* FilePath) {
 			temp_list << new QStandardItem(QString::number(jitemlist["list"][i]["posX"][j].GetDouble()));
 			temp_list << new QStandardItem(QString::number(jitemlist["list"][i]["posY"][j].GetDouble()));
 			temp_list << new QStandardItem(QString::number(jitemlist["list"][i]["posZ"][j].GetDouble()));
+			temp_list << new QStandardItem(QString::number(jitemlist["list"][i]["Rotation"][j].GetDouble()));
 			model->insertRow(crow++, temp_list);
 		}
 		
@@ -173,13 +181,14 @@ void EXPORT::pb_export_on_clicked() {
 }
 void EXPORT::pb_import_on_clicked() {
 	model->clear();
-	model->setColumnCount(6);
+	model->setColumnCount(7);
 	model->setHeaderData(0, Qt::Horizontal, QStringLiteral("家具"));
 	model->setHeaderData(1, Qt::Horizontal, QStringLiteral("类码"));
 	model->setHeaderData(2, Qt::Horizontal, QStringLiteral("序列"));
 	model->setHeaderData(3, Qt::Horizontal, QStringLiteral("X"));
 	model->setHeaderData(4, Qt::Horizontal, QStringLiteral("Y"));
 	model->setHeaderData(5, Qt::Horizontal, QStringLiteral("Z"));
+	model->setHeaderData(6, Qt::Horizontal, QStringLiteral("R"));
 
 	QString s1 = ui.le_import->text();
 	QString fp = ".\\list\\" + s1;
@@ -198,6 +207,7 @@ public:
 	vector<float> posX;
 	vector<float> posY;
 	vector<float> posZ;
+	vector<float> rotation;
 };
 
 int EXPORT::exportItemListJson(const char* FilePath) {
@@ -223,10 +233,13 @@ int EXPORT::exportItemListJson(const char* FilePath) {
 		float y = model->data(index).toFloat();
 		index = model->index(i, 5);
 		float z = model->data(index).toFloat();
+		index = model->index(i, 6);
+		float r = model->data(index).toFloat();
 		categoryList[cListindex].count++;
 		categoryList[cListindex].posX.push_back(x);
 		categoryList[cListindex].posY.push_back(y);
 		categoryList[cListindex].posZ.push_back(z);
+		categoryList[cListindex].rotation.push_back(r);
 
 		if (i < rc - 1) {
 			index = model->index(i + 1, 1);
@@ -274,6 +287,12 @@ int EXPORT::exportItemListJson(const char* FilePath) {
 			arrZ.PushBack(temp.posZ[i], d.GetAllocator());
 		}
 		d2.AddMember("posZ", arrZ, d.GetAllocator());
+		// ->d2R
+		Value arrR(kArrayType);
+		for (int i = 0; i < temp.rotation.size(); i++) {
+			arrR.PushBack(temp.rotation[i], d.GetAllocator());
+		}
+		d2.AddMember("Rotation", arrR, d.GetAllocator());
 		//string strId(catId);
 		//const char* ff = catId;
 		d3.PushBack(d2, d.GetAllocator());

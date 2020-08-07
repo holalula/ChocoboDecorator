@@ -35,6 +35,7 @@ public:
 		vector<float> posX;
 		vector<float> posY;
 		vector<float> posZ;
+		vector<float> rotation;
 	};
 	vector<CategoryInstance> categoryList;
 
@@ -45,12 +46,14 @@ public:
 	int SetPosList(vector<vector<float> > posList);
 	int GenInstanceList();
 	int ConverInstanceList2Json();
+	//Document ConverInstanceList2Json();
 	int GetCategoryList();
 
 	int WriteCategoryListJsonFile(const char* FilePath);
-	vector<CategoryInstance> ReadCateListJson(const char* FilePath); 
+	vector<CategoryInstance> ReadCateListJson(const char* FilePath); //return CategoryList
 	int Compare(vector<int> des, vector<CategoryInstance> categoryList);
 	vector<vector<float> > GetPosOfVectorIntByCategoryList(vector<int> vint, vector<CategoryInstance> categoryList);
+	vector<vector<float> > GetPosRotationOfVectorIntByCategoryList(vector<int> vint, vector<CategoryInstance> categoryList);
 
 
 };

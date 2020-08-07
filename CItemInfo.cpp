@@ -1,4 +1,8 @@
-#include "CItemInfo.h"
+﻿#include "CItemInfo.h"
+
+#include <iostream>
+
+
 
 void CItemInfo::update() {
 	readJ.ReadJsonFile("ItemInfo.json");
@@ -14,12 +18,13 @@ void CItemInfo::update() {
 			if (jvalue.IsInt()) {
 				string strKey = jkey.GetString();
 				int intValue = jvalue.GetInt();
-				//
+
 				this->id2name.insert(make_pair(intValue, strKey));
 				this->name2id.insert(make_pair(strKey, intValue));
 			}
 		}
 	}
+	
 }
 
 

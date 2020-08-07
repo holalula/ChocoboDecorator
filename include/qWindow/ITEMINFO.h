@@ -5,7 +5,7 @@
 #include <QStandardItemModel>
 #include <cstring>
 #include <map>
-
+#include "CItemInfo.h"
 using namespace std;
 class ITEMINFO : public QWidget
 {
@@ -19,12 +19,13 @@ public:
 	vector<string> name;
 	vector<int> name_f;
 	map<int, string> id2name;
+	CItemInfo citemInfo;
 	
 public slots:
 	void pb_read_on_clicked();
 	void pb_write_on_clicked();
 	void pb_wline_on_clicked();
-
+	void pb_dline_on_clicked();
 private:
 	Ui::ITEMINFO ui;
 };

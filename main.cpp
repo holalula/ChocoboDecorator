@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 	
     ChocoboFFXIV w;
 	w.setWindowFlags(Qt::WindowStaysOnTopHint);
-	w.setWindowTitle("ChocoboDecorator v0.9.0");
+	w.setWindowTitle("ChocoboDecorator v0.9.6");
     w.show();
 
     return a.exec();

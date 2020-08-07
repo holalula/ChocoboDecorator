@@ -27,12 +27,15 @@ public:
 	WriteType WriteGameMemory(SIZE_T addr, WriteType writeData, vector<SIZE_T>offsets);
 	template<typename ReadType>
 	vector<ReadType> ReadGameMemory(SIZE_T addr, vector<SIZE_T>offsets, vector<SIZE_T>final_addr_offsets);
+
 	template<typename ReadType>
 	ReadType ReadGameMemory(SIZE_T addr, vector<SIZE_T>offsets, SIZE_T final_addr_offset);
 	template<typename WriteType>
 	WriteType WriteGameMemory(SIZE_T addr, WriteType writeData, vector<SIZE_T>offsets, SIZE_T final_addr_offset);
 
-	int ChangeOffset(int);
+	float GetActiveItemRotation();
+	int SetActiveItemRotation(float r);
+
 	vector<float> GetActiveItemPos();
 	int SetActiveItemX(float x);
 	int SetActiveItemY(float y);
@@ -40,34 +43,35 @@ public:
 	int SetActivePos(vector<float> pos);
 
 	int GetItemCount();
+	int GetItemPageCount();
 	int IsWarehouse();
 	vector<int> GetItemList();
 
-	//inject if
-	//if je mov/sub cmp
-	int InjectPlaceAnywhere(); // 173 work
+	int InjectPlaceAnywhere();
 	int reInjectPlaceAnywhere();
-	int InjectPlaceAnywhere2();
-	int reInjectPlaceAnywhere2();
-	int InjectPlaceAnywhere3();
-	int reInjectPlaceAnywhere3();  //154
-	int InjectPlaceAnywhere4();
-	int reInjectPlaceAnywhere4();
-	//other: rdi168 raxC5 rsif8 rdi160
 
 	int InjectBlue();
 	int reInjectBlue();
 
-	int InjectYellow();
-	int reInjectYellow();
-
 	int GetAllItemPos();
 	vector<vector<float> > GetAllItemPos(int a);
 	int SetAllItemPos(vector<vector<float> >pos);
-
-
+	//sj
+	int reInjectSj();
+	int reInjectSj2();
+	int reInjectSj3();
+	int InjectSjWithPos(float x, float y, float z);
+	int InjectSjWithPos2(float x, float y, float z);
+	int InjectSjWithPos3(float x, float y, float z);
+	
+	//getAll --- setAll
 	vector<vector<float> > GetAllItemPos(int a, int t2, int t0, int t);
 	int SetAllItemPos(vector<vector<float> >pos, int t2, int t0, int t);
+
+	//rotation
+	vector<vector<float> > GetAllItemPosRotation(int a, int t2, int t0, int t);
+	int SetAllItemPosRotation(vector<vector<float> >pos, int t2, int t0, int t);
+
 
 	DWORD GetPid();
 	SIZE_T GetBaseAdd();
@@ -120,7 +124,8 @@ ReadType FFProcess::ReadGameMemory(SIZE_T addr, vector<SIZE_T>offsets) {
 	SIZE_T dwSize;
 	SIZE_T value1;
 	SIZE_T value2;
-
+	//SIZE_T readSz;
+	//ReadProcessMemory(this->hProcess,(LPVOID)addr, &value1, sizeof(SIZE_T), &dwSize);
 	value1 = addr;
 
 	cout << "ReadProcessMemory addr1 " << value1 << endl;
@@ -147,7 +152,8 @@ WriteType FFProcess::WriteGameMemory(SIZE_T addr, WriteType writeData, vector<SI
 	SIZE_T dwSize;
 	SIZE_T value1;
 	SIZE_T value2;
-
+	//SIZE_T readSz;
+	//ReadProcessMemory(this->hProcess,(LPVOID)addr, &value1, sizeof(SIZE_T), &dwSize);
 	value1 = addr;
 	for (int i = 0; i < offset_size - 1; i++) {
 		SIZE_T offset = offsets[i];
@@ -197,7 +203,8 @@ WriteType FFProcess::WriteGameMemory(SIZE_T addr, WriteType writeData, vector<SI
 	SIZE_T dwSize;
 	SIZE_T value1;
 	SIZE_T value2;
-
+	//SIZE_T readSz;
+	//ReadProcessMemory(this->hProcess,(LPVOID)addr, &value1, sizeof(SIZE_T), &dwSize);
 	value1 = addr;
 	for (int i = 0; i < offset_size - 1; i++) {
 		SIZE_T offset = offsets[i];
@@ -219,7 +226,8 @@ ReadType FFProcess::ReadGameMemory(SIZE_T addr, vector<SIZE_T>offsets, SIZE_T fi
 	SIZE_T dwSize;
 	SIZE_T value1;
 	SIZE_T value2;
-
+	//SIZE_T readSz;
+	//ReadProcessMemory(this->hProcess,(LPVOID)addr, &value1, sizeof(SIZE_T), &dwSize);
 	value1 = addr;
 
 	cout << "ReadProcessMemory addr1 " << value1 << endl;
