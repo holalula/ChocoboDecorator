@@ -73,3 +73,17 @@ ffxiv_dx11.exe+564A8A - C6 87 73010000 00     - mov byte ptr [rdi+00000173],00 {
 5)blue-judgefunc
 
 560DF0 
+
+
+
+
+
+5.25
+
+Blue: +0x560b70 
+
+aob:4885d20f84a6
+
+
+
+aob:8b028941508b42048941548b42088941580f104210
