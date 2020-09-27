@@ -1,7 +1,11 @@
-*.json
+<<<<<<< HEAD
 *.rar
 *.t
 *.lib
 /iteminfo/
 /list/
 /x64/
+=======
+
+img/V091sj.png
+>>>>>>> 316fb8ddf64baf33aebc50f00e8f18bea6287e2d
