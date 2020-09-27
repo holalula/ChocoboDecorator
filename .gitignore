@@ -1,0 +1,7 @@
+*.json
+*.rar
+*.t
+*.lib
+/iteminfo/
+/list/
+/x64/
